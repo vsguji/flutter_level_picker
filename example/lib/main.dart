@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-06-05 23:30:36
- * @LastEditTime: 2022-06-06 08:28:27
+ * @LastEditTime: 2022-06-06 09:40:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /flutter_levels_picker/example/lib/main.dart
@@ -82,9 +82,9 @@ class _MyAppState extends State<MyApp> {
             Padding(padding: EdgeInsets.only(top: 100)),
             TextButton(
                 onPressed: () async {
-                  final _jsonStr = await DefaultAssetBundle.of(context)
-                      .loadString('assets/area.json');
-                  CityRecursiveModel cityModel = CityRecursiveModel(_jsonStr);
+                  // final _jsonStr = await DefaultAssetBundle.of(context)
+                  //     .loadString('assets/area.json');
+                  // CityRecursiveModel cityModel = CityRecursiveModel(_jsonStr);
 
                   String belongId;
                   int id;
@@ -145,14 +145,14 @@ class _MyAppState extends State<MyApp> {
                   showModalBottomSheet(
                       context: context,
                       builder: (context) {
-                        return LevelsPicker<CityModel>(
-                          items: cityModel.records,
-                          adapter: PickerAnyAdapter<CityModel>(
-                              levelExtendsUI: ShowPickExtendsUI.extendsNone),
+                        return LevelsPicker<LevelItemItem>(
+                          items: items.children,
+                          adapter: PickerAnyAdapter<LevelItemItem>(
+                              levelExtendsUI: ShowPickExtendsUI.extendsIcon),
                           maxLevel: 3,
-                          levelStepStype: ShowLevelType.showLevelOneByOne,
+                          levelStepStype: ShowLevelType.showLevels,
                           isCircleCorner: true,
-                          title: Text('请选择所在地区'),
+                          title: Text('请选择分类'),
                           hideHeader: false,
                           hideFooter: false,
                           // builderHeader: (context) {

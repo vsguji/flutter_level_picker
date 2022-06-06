@@ -1,7 +1,7 @@
 /*
  * @Author: qian suo
  * @Date: 2021-07-14 14:52:55
- * @LastEditTime: 2022-06-05 23:47:37
+ * @LastEditTime: 2022-06-06 09:29:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /SRetailGoods/lib/src/common/bottom_city_picker_view/city_picker.dart
@@ -892,10 +892,8 @@ class PickerAnyAdapter<T> extends PickerLevelAdapter<T> {
                 callBack?.call(item, this);
               },
               icon: Image.asset(
-                item.selected
-                    ? 'images/system_radio_sel.png'
-                    : 'images/system_radio_nor.png',
-                package: 'flutter_quick_views',
+                item.selected ? 'system_radio_sel.png' : 'system_radio_nor.png',
+                package: 'flutter_levels_picker',
               ));
         }
         break;
