@@ -1,7 +1,7 @@
 /*
  * @Author: qian suo
  * @Date: 2021-07-14 14:52:55
- * @LastEditTime: 2022-06-06 09:29:24
+ * @LastEditTime: 2022-06-06 09:44:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /SRetailGoods/lib/src/common/bottom_city_picker_view/city_picker.dart
@@ -843,7 +843,7 @@ class PickerAnyAdapter<T> extends PickerLevelAdapter<T> {
   final List<T> items;
   final int maxLevel;
   // 缓存
-  late LevelsBaseModel _preCacheModel;
+  LevelsBaseModel? _preCacheModel;
   // 逐级扩展UI,展示方式
   final ShowPickExtendsUI levelExtendsUI;
   final Text? extendLabel;
@@ -882,7 +882,7 @@ class PickerAnyAdapter<T> extends PickerLevelAdapter<T> {
                   item.setSelected(!item.selected);
                 } else {
                   if (_preCacheModel != null) {
-                    _preCacheModel.setSelected(false);
+                    _preCacheModel?.setSelected(false);
                   }
                   item.setSelected(!item.selected);
                   if (item.selected) {
