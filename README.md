@@ -21,41 +21,11 @@ Android和iOS。
 
 <img src="https://github.com/vsguji/flutter_level_picker/blob/main/example/assets/city_levels_picker.gif" width="320" height="480">
 
+
 ```
  final _jsonStr = await DefaultAssetBundle.of(context)
-                      .loadString('assets/area.json');
+                       .loadString('assets/area.json');
  CityRecursiveModel cityModel = CityRecursiveModel(_jsonStr);
-
- showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return LevelsPicker<CityModel>(
-                          items: cityModel.records,
-                          adapter: PickerAnyAdapter<CityModel>(
-                              levelExtendsUI: ShowPickExtendsUI.extendsNone),
-                          maxLevel: 3,
-                          levelStepStype: ShowLevelType.showLevelOneByOne,
-                          isCircleCorner: true,
-                          title: Text('请选择所在地区'),
-                          hideHeader: false,
-                          hideFooter: false,
-                          // builderHeader: (context) {
-                          //   return Container(
-                          //     color: Colors.black54,
-                          //     height: 44,
-                          //     child: ClipRRect(
-                          //       borderRadius: BorderRadius.only(
-                          //           topLeft: Radius.circular(16),
-                          //           topRight: Radius.circular(16)),
-                          //       child: Container(
-                          //         color: Colors.white,
-                          //         height: 44,
-                          //       ),
-                          //     ),
-                          //   );
-                          // },
-                        );
-                      });
 
 ```
 
@@ -63,84 +33,29 @@ Android和iOS。
 
 选择分类
 
+<img src="https://github.com/vsguji/flutter_level_picker/blob/main/example/assets/category_one_picker.gif" width="320" height="480">
+
+
+<img src="https://github.com/vsguji/flutter_level_picker/blob/main/example/assets/category_two_picker.gif" width="320" height="480">
+
+
+
+<img src="https://github.com/vsguji/flutter_level_picker/blob/main/example/assets/category_three_picker.gif" width="320" height="480">
 
 ```
 
- LevelItemItem items = LevelItemItem.fromParams(
-                      belongId: '001',
-                      id: 1,
-                      isShow: 1,
-                      name: '001',
-                      children: [
-                        LevelItemItem.fromParams(
-                            belongId: '001',
-                            id: 11,
-                            isShow: 1,
-                            name: '001',
-                            parentIds: '1',
-                            children: [
-                              LevelItemItem.fromParams(
-                                  belongId: '1001',
-                                  id: 12,
-                                  isShow: 1,
-                                  name: '1001',
-                                  parentIds: '1,11',
-                                  children: [
-                                    LevelItemItem.fromParams(
-                                        belongId: '1101',
-                                        id: 1,
-                                        isShow: 1,
-                                        name: '111',
-                                        parentIds: '1,11,12'),
-                                  ]),
-                            ]),
-                        LevelItemItem.fromParams(
-                            belongId: '002',
-                            id: 12,
-                            isShow: 1,
-                            name: '002',
-                            parentIds: '1',
-                            children: [
-                              LevelItemItem.fromParams(
-                                  belongId: '1002',
-                                  id: 2,
-                                  isShow: 1,
-                                  name: '1002',
-                                  parentIds: '1,12'),
-                            ])
-                      ]);
+/// 展示方式
+enum ShowLevelType {
+  showLevelOneByOne, // 逐层显示
+  showLevels, //< 显示要求层级,需设置maxLevel
+}
 
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return LevelsPicker<CityModel>(
-                          items: cityModel.records,
-                          adapter: PickerAnyAdapter<CityModel>(
-                              levelExtendsUI: ShowPickExtendsUI.extendsNone),
-                          maxLevel: 3,
-                          levelStepStype: ShowLevelType.showLevelOneByOne,
-                          isCircleCorner: true,
-                          title: Text('请选择所在地区'),
-                          hideHeader: false,
-                          hideFooter: false,
-                          // builderHeader: (context) {
-                          //   return Container(
-                          //     color: Colors.black54,
-                          //     height: 44,
-                          //     child: ClipRRect(
-                          //       borderRadius: BorderRadius.only(
-                          //           topLeft: Radius.circular(16),
-                          //           topRight: Radius.circular(16)),
-                          //       child: Container(
-                          //         color: Colors.white,
-                          //         height: 44,
-                          //       ),
-                          //     ),
-                          //   );
-                          // },
-                        );
-                      });
-
+/// 选择处理方式
+enum ShowPickExtendsUI {
+  extendsLabel, // 选择最末级,文字显示
+  extendsIcon, // 选择任意级,图标
+  extendsNone // 无
+}
 
 ```
 
